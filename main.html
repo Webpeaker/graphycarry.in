@@ -1,0 +1,1615 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>GraphCarry — Main</title>
+  <meta name="description" content="GraphCarry main navigation and portfolio landing." />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap');
+
+    :root {
+      --bg: #0b0713;
+      --bg-deep: #090512;
+      --gold: #d8b074;
+      --gold-2: #f0cf8a;
+      --magenta: #d4579b;
+      --violet: #6c3f9b;
+      --white: #f6f2ff;
+      --muted: #c7b8d6;
+      --card: rgba(255, 255, 255, 0.06);
+      --stroke: rgba(255, 255, 255, 0.12);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--white);
+      background: radial-gradient(1200px 800px at 20% 10%, #2a163f 0%, transparent 60%),
+        radial-gradient(900px 700px at 90% 20%, #2a1f3b 0%, transparent 55%),
+        linear-gradient(135deg, var(--bg) 0%, var(--bg-deep) 100%);
+      font-family: "Source Sans 3", system-ui, -apple-system, sans-serif;
+      overflow-x: hidden;
+      scrollbar-width: none;
+    }
+
+    body::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    section {
+      width: 100%;
+      padding: 3.5rem 0;
+    }
+
+    .page {
+      width: 100%;
+      padding: 3.8rem clamp(1.6rem, 5vw, 6rem) 4.2rem;
+      display: block;
+    }
+
+    section+section {
+      margin-top: 1.2rem;
+    }
+
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      width: 100%;
+      margin-bottom: 2.4rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .brand img {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .brand span {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.02em;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex: 1 1 420px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--white);
+      font-size: 1.2rem;
+      cursor: pointer;
+      justify-self: end;
+    }
+
+    .nav-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem 1.4rem;
+      list-style: none;
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      background: #1c1328;
+      border: 1px solid var(--stroke);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      align-items: center;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .nav-wrap a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+      cursor: pointer;
+    }
+
+    .nav-wrap a:hover {
+      color: var(--gold-2);
+    }
+
+    .nav-wrap a:focus-visible {
+      outline: 2px solid var(--gold-2);
+      outline-offset: 4px;
+      border-radius: 999px;
+    }
+
+    .nav-wrap li {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border-radius: 999px;
+      padding: 0.2rem 0.5rem;
+    }
+
+    .nav-wrap li:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .download {
+      justify-self: end;
+      padding: 0.85rem 1.4rem;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      color: #2a1a34;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      align-items: center;
+      gap: 2rem;
+      min-height: 100vh;
+      align-content: center;
+    }
+
+    .hero-left {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-2);
+    }
+
+    .hero-title {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      font-size: clamp(2.6rem, 5vw, 4.1rem);
+      line-height: 1.1;
+    }
+
+    .hero-title span {
+      color: var(--gold);
+    }
+
+    .hero-text {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .cta-primary {
+      padding: 0.9rem 1.6rem;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      color: #2a1a34;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-secondary {
+      padding: 0.9rem 1.6rem;
+      border-radius: 12px;
+      border: 1px solid var(--stroke);
+      background: transparent;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .hero-right {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-card p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .hero-logo {
+      display: grid;
+      place-items: center;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .hero-logo img {
+      width: min(220px, 70vw);
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(120px, 1fr));
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .stat {
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--stroke);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.2rem;
+      color: var(--gold-2);
+      margin-bottom: 0.3rem;
+    }
+
+    .stat span {
+      font-size: 0.85rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .about-media {
+      display: grid;
+      place-items: center;
+    }
+
+    .about-media img {
+      width: min(360px, 90vw);
+      height: auto;
+      border-radius: 24px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+      object-fit: cover;
+    }
+
+    .about-text h2 {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      margin-bottom: 0.8rem;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .about-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.4rem 0;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+
+    .about-stat {
+      padding: 1rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--stroke);
+      text-align: center;
+    }
+
+    .about-stat strong {
+      display: block;
+      font-size: 1.15rem;
+      color: var(--gold-2);
+      margin-bottom: 0.35rem;
+    }
+
+    .about-stat span {
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.6rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .section-head h2 {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      font-size: clamp(1.9rem, 3vw, 2.6rem);
+    }
+
+    .section-head p {
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 60ch;
+    }
+
+    .portfolio {}
+
+    .portfolio-grid {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc((100% - 2.8rem) / 3);
+      gap: 1.4rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 0.6rem;
+      scrollbar-color: var(--gold) rgba(255, 255, 255, 0.08);
+      scrollbar-width: thin;
+    }
+
+    .portfolio-grid::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .portfolio-grid::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+    }
+
+    .portfolio-grid::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      border-radius: 999px;
+    }
+
+    .portfolio-card {
+      display: grid;
+      gap: 1rem;
+      padding: 1.6rem;
+      border-radius: 22px;
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      scroll-snap-align: start;
+    }
+
+    .portfolio-nav {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .portfolio-nav button {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--white);
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .portfolio-media {
+      border-radius: 18px;
+      padding: 1.2rem;
+      min-height: 150px;
+      background: linear-gradient(135deg, rgba(212, 87, 155, 0.35), rgba(108, 63, 155, 0.35)),
+        radial-gradient(260px 120px at 20% 20%, rgba(240, 207, 138, 0.4), transparent 60%);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      display: grid;
+      align-content: end;
+      gap: 0.4rem;
+    }
+
+    .portfolio-media span {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .portfolio-card h3 {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      font-size: 1.35rem;
+    }
+
+    .portfolio-card p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .showcase {
+      margin-top: 2.5rem;
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.6rem;
+    }
+
+    .showcase-card {
+      padding: 0;
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 0;
+      aspect-ratio: 4 / 3;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .showcase-tag {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .showcase-card h3 {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      font-size: 1.6rem;
+    }
+
+    .showcase-card p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .showcase-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      opacity: 1;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+    }
+
+    .showcase-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    .showcase-card:hover::after {
+      opacity: 0;
+    }
+
+    .showcase-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 26px;
+      object-fit: cover;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
+      filter: grayscale(1) saturate(0.6) brightness(0.8);
+      transition: filter 0.2s ease;
+    }
+
+    .showcase-card:hover .showcase-image {
+      filter: none;
+    }
+
+    .team-strip {
+      margin-top: 1.6rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .team-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 1rem 1.2rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--stroke);
+    }
+
+    .team-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #2a1a34;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+    }
+
+    .team-photo {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .team-card strong {
+      display: block;
+      font-size: 1rem;
+    }
+
+    .team-card span {
+      color: var(--muted);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    footer {
+      margin-top: 3rem;
+      border-top: 1px solid var(--stroke);
+      padding-top: 2rem;
+      display: grid;
+      gap: 1.2rem;
+      text-align: left;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .footer-brand {
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .footer-brand h3 {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      font-size: 1.4rem;
+    }
+
+    .footer-brand p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: grid;
+      gap: 0.6rem;
+      padding: 0;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .footer-cta {
+      display: grid;
+      gap: 0.8rem;
+      justify-items: start;
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.4rem;
+      color: rgba(199, 184, 214, 0.6);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .services {}
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .service-card {
+      padding: 1.8rem;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .service-kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-2);
+    }
+
+    .service-card h3 {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      font-size: 1.4rem;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .service-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .service-meta span {
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .process {}
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.6rem;
+      align-items: center;
+    }
+
+    .process-item {
+      display: grid;
+      align-items: center;
+    }
+
+    .process-arrow {
+      display: none;
+      justify-self: center;
+      font-size: 1.6rem;
+      color: var(--gold-2);
+    }
+
+    @media (min-width: 900px) {
+      .process-grid {
+        grid-template-columns: repeat(7, minmax(140px, 1fr));
+      }
+
+      .process-item {
+        grid-column: span 1;
+      }
+
+      .process-arrow {
+        display: block;
+        grid-column: span 1;
+      }
+    }
+
+    .process-circle {
+      width: min(200px, 70vw);
+      aspect-ratio: 1 / 1;
+      margin: 0 auto;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 1.4rem;
+      background: radial-gradient(circle at 30% 20%, rgba(240, 207, 138, 0.35), transparent 60%),
+        linear-gradient(135deg, rgba(212, 87, 155, 0.25), rgba(108, 63, 155, 0.35));
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: var(--shadow);
+    }
+
+    .process-circle span {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .process-circle h3 {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .process-circle p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .testimonials {
+      margin-top: 2.5rem;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .testimonial-card {
+      padding: 1.8rem;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 1rem;
+    }
+
+    .testimonial-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .testimonial-client {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(240, 207, 138, 0.6), rgba(212, 87, 155, 0.6));
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .testimonial-client strong {
+      display: block;
+      font-size: 1rem;
+    }
+
+    .testimonial-client span {
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .contact {
+      margin-top: 2.5rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .contact-card {
+      padding: 1.6rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .contact-card span {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .contact-card a {
+      color: var(--gold-2);
+      text-decoration: none;
+      font-size: 1rem;
+      word-break: break-word;
+    }
+
+    @media (max-width: 900px) {
+      .portfolio-grid {
+        grid-auto-columns: calc((100% - 1.4rem) / 2);
+      }
+
+      section {
+        padding: 3rem 0;
+      }
+
+      header {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+      }
+
+      nav {
+        flex-direction: column;
+        width: 100%;
+        position: relative;
+      }
+
+      .download {
+        width: 100%;
+        max-width: 280px;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-right {
+        width: 100%;
+      }
+
+      .about-media img {
+        width: min(420px, 100%);
+      }
+
+      .process-circle {
+        width: min(180px, 70vw);
+      }
+
+      .showcase-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .footer-top {
+        text-align: center;
+        justify-items: center;
+      }
+
+      .footer-cta {
+        justify-items: center;
+      }
+
+      .menu-toggle {
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .nav-wrap {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: center;
+        z-index: 20;
+        padding: 1rem;
+      }
+
+      nav.nav-open .nav-wrap {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .portfolio-grid {
+        grid-auto-columns: 100%;
+      }
+
+      section {
+        padding: 2.5rem 0;
+      }
+
+      .page {
+        padding: 2rem 1.2rem;
+      }
+
+      .brand span {
+        font-size: 1.2rem;
+      }
+
+      .nav-wrap {
+        border-radius: 18px;
+        padding: 1rem;
+        justify-content: center;
+      }
+
+      .download {
+        width: 100%;
+      }
+
+      .download {
+        order: 2;
+      }
+
+      .menu-toggle {
+        order: 3;
+      }
+
+      header {
+
+        justify-content: space-between;
+      }
+
+      .brand {
+        flex: 0 1 auto;
+      }
+
+      .download {
+        width: auto;
+        max-width: none;
+        padding: 0.65rem 0.9rem;
+        font-size: 0.82rem;
+        margin-right: 0.4rem;
+      }
+
+      .menu-toggle {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+        margin-right: 0.2rem;
+      }
+
+      nav {
+        order: 4;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-right {
+        width: 100%;
+        justify-items: stretch;
+      }
+
+      .hero-card {
+        width: 100%;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        align-content: start;
+      }
+
+      .hero-left,
+      .hero-right {
+        gap: 1rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .cta-primary,
+      .cta-secondary {
+        width: 100%;
+      }
+
+      .hero-title {
+        font-size: clamp(2.1rem, 8vw, 2.8rem);
+      }
+
+      .hero-text {
+        font-size: 0.98rem;
+      }
+
+      .portfolio-nav {
+        justify-content: center;
+      }
+
+      .portfolio-nav button {
+        width: 40px;
+        height: 40px;
+      }
+
+      .process-grid {
+        gap: 1.2rem;
+      }
+
+      .process-circle {
+        width: min(170px, 78vw);
+        padding: 1.2rem;
+      }
+
+      .contact-grid,
+      .testimonial-grid,
+      .services-grid,
+      .showcase-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        justify-items: center;
+      }
+
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 1.6rem 1rem;
+      }
+
+      header {
+        gap: 1rem;
+      }
+
+      .brand img {
+        width: 46px;
+        height: 46px;
+      }
+
+      .hero {
+        gap: 1.5rem;
+      }
+
+      .hero-card {
+        padding: 1.4rem;
+      }
+
+      .section-head h2 {
+        font-size: clamp(1.6rem, 8vw, 2.1rem);
+      }
+
+      .about-media img {
+        width: 100%;
+      }
+
+      .process-circle {
+        width: min(160px, 80vw);
+        padding: 1rem;
+      }
+
+      .portfolio-nav {
+        gap: 0.6rem;
+      }
+
+      .portfolio-nav button {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+      }
+
+      .contact-card,
+      .testimonial-card,
+      .service-card,
+      .showcase-card {
+        padding: 1.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="#">
+        <img src="logo.png" alt="GraphCarry logo" />
+        <span>GraphCarry</span>
+      </a>
+
+      <nav aria-label="Main" id="main-nav">
+        <ul class="nav-wrap">
+          <li><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-controls="main-nav"
+        aria-expanded="false">
+        ☰
+      </button>
+
+      <button class="download" type="button">Download Design</button>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-kicker">Design Studio</div>
+        <h1 class="hero-title">GraphCarry crafts <span>luxury-first</span> brand stories.</h1>
+        <p class="hero-text">
+          GraphCarry blends couture sensibility with product strategy to deliver refined visual systems,
+          concept decks, and high-impact custom design work for modern brands.
+        </p>
+        <div class="hero-actions">
+          <button class="cta-primary" type="button">Start a Project</button>
+          <button class="cta-secondary" type="button">View Portfolio</button>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-card">
+          <h3>GraphCarry Studio</h3>
+          <p>
+            A business-led design lab shaping premium product identities, creative direction, and
+            couture-inspired visual systems.
+          </p>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>100+</strong>
+            <span>Sketch &amp; Painting</span>
+          </div>
+          <div class="stat">
+            <strong>50+</strong>
+            <span>Idea Present</span>
+          </div>
+          <div class="stat">
+            <strong>2026</strong>
+            <span>Launched</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>Download the Latest Concept Deck</h3>
+          <p>
+            Explore curated design drafts, moodboards, and visual systems that show how GraphCarry
+            shapes premium product identities.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-media">
+        <img src="Locket.png" alt="Founder Mahak Patel" />
+      </div>
+      <div class="about-text">
+        <h2>About Us</h2>
+        <p>
+          GraphCarry is a boutique fashion studio shaping concept development, luxury visuals,
+          and fashion-forward storytelling for modern labels.
+        </p>
+        <p>
+          We translate sketches into refined presentations, collection directions, and design
+          systems that feel polished and gallery-ready.
+        </p>
+        <p>
+          Every project is guided by a clear process, premium finish, and close collaboration that
+          keeps the fashion voice consistent at every touchpoint.
+        </p>
+        <div class="about-actions">
+          <button class="cta-primary" type="button">Meet the Studio</button>
+          <button class="cta-secondary" type="button">See Our Process</button>
+        </div>
+
+        <div class="team-card">
+          <div class="team-logo">GC</div>
+          <div>
+            <strong>Mahak Patel</strong>
+            <span>Founder</span>
+          </div>
+        </div>
+        <br>
+        <div class="about-stats">
+          <div class="about-stat">
+            <strong>320+</strong>
+            <span>Sketches Drawn</span>
+          </div>
+          <div class="about-stat">
+            <strong>48</strong>
+            <span>Brands Served</span>
+          </div>
+          <div class="about-stat">
+            <strong>12</strong>
+            <span>Studio Artists</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+      <div class="section-head">
+        <h2>Portfolio</h2>
+        <p>
+          Art &amp; craft focused fashion and designing work — premium product identities and visual
+          systems crafted to feel luxurious, cohesive, and launch-ready.
+        </p>
+      </div>
+      <div class="portfolio-grid">
+        <article class="portfolio-card">
+          <div class="portfolio-media">
+            <span>Brand Identity</span>
+            <h3>Velora Atelier</h3>
+          </div>
+          <p>Luxury fashion label identity with refined typography, packaging, and editorial layouts.</p>
+          <button class="cta-secondary" type="button">View Case Study</button>
+        </article>
+        <article class="portfolio-card">
+          <div class="portfolio-media">
+            <span>Product Design</span>
+            <h3>Maison Lumière</h3>
+          </div>
+          <p>Elevated product system and lookbook design for a couture-inspired accessories brand.</p>
+          <button class="cta-secondary" type="button">View Case Study</button>
+        </article>
+        <article class="portfolio-card">
+          <div class="portfolio-media">
+            <span>Campaign</span>
+            <h3>Noir Collective</h3>
+          </div>
+          <p>High-impact launch campaign with visual direction, styling decks, and ad creatives.</p>
+          <button class="cta-secondary" type="button">View Case Study</button>
+        </article>
+        <article class="portfolio-card">
+          <div class="portfolio-media">
+            <span>Visual System</span>
+            <h3>Atelier Sera</h3>
+          </div>
+          <p>Editorial and social toolkit built for a modern luxury brand’s seasonal release.</p>
+          <button class="cta-secondary" type="button">View Case Study</button>
+        </article>
+        <article class="portfolio-card">
+          <div class="portfolio-media">
+            <span>Packaging</span>
+            <h3>Opaline Maison</h3>
+          </div>
+          <p>Premium packaging and unboxing system crafted for a couture fragrance line.</p>
+          <button class="cta-secondary" type="button">View Case Study</button>
+        </article>
+        <article class="portfolio-card">
+          <div class="portfolio-media">
+            <span>Digital</span>
+            <h3>Silk &amp; Stone</h3>
+          </div>
+          <p>Landing pages and e-commerce visuals aligned with a luxury editorial aesthetic.</p>
+          <button class="cta-secondary" type="button">View Case Study</button>
+        </article>
+      </div>
+      <div class="portfolio-nav">
+        <button type="button" data-scroll="left" aria-label="Previous portfolio slide">←</button>
+        <button type="button" data-scroll="right" aria-label="Next portfolio slide">→</button>
+      </div>
+    </section>
+
+    <section class="showcase" id="showcase">
+      <div class="section-head">
+        <h2>Gallery</h2>
+
+      </div>
+      <div class="showcase-grid">
+        <article class="showcase-card">
+          <img class="showcase-image" src="1.jpg" alt="Gallery image 1" />
+        </article>
+        <article class="showcase-card">
+          <img class="showcase-image" src="2.jpg" alt="Gallery image 2" />
+        </article>
+        <article class="showcase-card">
+          <img class="showcase-image" src="3.jpeg" alt="Gallery image 3" />
+        </article>
+        <article class="showcase-card">
+          <img class="showcase-image" src="4.jpg" alt="Gallery image 4" />
+        </article>
+        <article class="showcase-card">
+          <img class="showcase-image" src="5.webp" alt="Gallery image 5" />
+        </article>
+        <article class="showcase-card">
+          <img class="showcase-image" src="6.jpg" alt="Gallery image 6" />
+        </article>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="section-head">
+        <h2>Fashion Services</h2>
+        <p>
+          Markup concept development for fashion design — from sketching and fabric stories to
+          waste-to-design explorations and runway walk preparation.
+        </p>
+      </div>
+      <div class="services-grid">
+        <article class="service-card">
+          <div class="service-kicker">Design</div>
+          <h3>Fashion Sketching</h3>
+          <p>Figure drawing, silhouette exploration, pose studies, and garment detailing for class projects.</p>
+          <div class="service-meta">
+            <span>Silhouettes</span>
+            <span>Details</span>
+            <span>Pose</span>
+          </div>
+        </article>
+        <article class="service-card">
+          <div class="service-kicker">Materials</div>
+          <h3>Fabric &amp; Textile Boards</h3>
+          <p>Swatch curation, texture mapping, and color stories to support garment concepts.</p>
+          <div class="service-meta">
+            <span>Swatches</span>
+            <span>Textures</span>
+            <span>Color Story</span>
+          </div>
+        </article>
+        <article class="service-card">
+          <div class="service-kicker">Sustain</div>
+          <h3>Waste to Design</h3>
+          <p>Upcycling concepts, pattern experimentation, and zero-waste design ideation.</p>
+          <div class="service-meta">
+            <span>Upcycle</span>
+            <span>Zero Waste</span>
+            <span>Patterns</span>
+          </div>
+        </article>
+        <article class="service-card">
+          <div class="service-kicker">Runway</div>
+          <h3>Walk &amp; Styling Prep</h3>
+          <p>Look planning, styling notes, and runway walk guidance for final presentations.</p>
+          <div class="service-meta">
+            <span>Looks</span>
+            <span>Styling</span>
+            <span>Runway</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="section-head">
+        <h2>Process</h2>
+        <p>
+          Four clear stages that keep every project premium, fast, and aligned with your brand vision.
+        </p>
+      </div>
+      <div class="process-grid">
+        <div class="process-item">
+          <div class="process-circle">
+            <div>
+              <span>01</span>
+              <h3>Design</h3>
+              <p>Concept moodboards, visual tone, and initial layouts.</p>
+            </div>
+          </div>
+        </div>
+        <div class="process-arrow" aria-hidden="true">→</div>
+        <div class="process-item">
+          <div class="process-circle">
+            <div>
+              <span>02</span>
+              <h3>Report</h3>
+              <p>Progress updates, drafts, and direction checkpoints.</p>
+            </div>
+          </div>
+        </div>
+        <div class="process-arrow" aria-hidden="true">→</div>
+        <div class="process-item">
+          <div class="process-circle">
+            <div>
+              <span>03</span>
+              <h3>Re-Design</h3>
+              <p>Refine feedback, polish details, and elevate quality.</p>
+            </div>
+          </div>
+        </div>
+        <div class="process-arrow" aria-hidden="true">→</div>
+        <div class="process-item">
+          <div class="process-circle">
+            <div>
+              <span>04</span>
+              <h3>Submit</h3>
+              <p>Final delivery with ready-to-use assets and files.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const portfolioGrid = document.querySelector(".portfolio-grid");
+      const portfolioButtons = document.querySelectorAll(".portfolio-nav button");
+      const nav = document.querySelector("#main-nav");
+      const navToggle = document.querySelector(".menu-toggle");
+
+      portfolioButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const direction = button.dataset.scroll === "left" ? -1 : 1;
+          const scrollAmount = portfolioGrid.clientWidth * 0.9 * direction;
+          portfolioGrid.scrollBy({ left: scrollAmount, behavior: "smooth" });
+        });
+      });
+
+      navToggle.addEventListener("click", () => {
+        nav.classList.toggle("nav-open");
+        const isOpen = nav.classList.contains("nav-open");
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+        navToggle.textContent = isOpen ? "✕" : "☰";
+      });
+
+      setInterval(() => {
+        const maxScroll = portfolioGrid.scrollWidth - portfolioGrid.clientWidth;
+        if (portfolioGrid.scrollLeft >= maxScroll - 10) {
+          portfolioGrid.scrollTo({ left: 0, behavior: "smooth" });
+          return;
+        }
+        const scrollAmount = portfolioGrid.clientWidth * 0.85;
+        portfolioGrid.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      }, 3500);
+    </script>
+
+    <section class="testimonials" id="testimonials">
+      <div class="section-head">
+        <h2>Testimonials</h2>
+        <p>What premium brands say after working with GraphCarry studio.</p>
+      </div>
+      <div class="testimonial-grid">
+        <article class="testimonial-card">
+          <p>
+            “GraphCarry translated our moodboard into a full brand system that feels luxurious and
+            launch-ready. The detailing is exceptional.”
+          </p>
+          <div class="testimonial-client">
+            <div class="testimonial-avatar" aria-hidden="true"></div>
+            <div>
+              <strong>Riya Kapoor</strong>
+              <span>Creative Director</span>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <p>
+            “Fast delivery, premium polish, and a deep understanding of fashion aesthetics. Our
+            campaign looked editorial from day one.”
+          </p>
+          <div class="testimonial-client">
+            <div class="testimonial-avatar" aria-hidden="true"></div>
+            <div>
+              <strong>Arjun Malhotra</strong>
+              <span>Brand Founder</span>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <p>
+            “From logo to packaging, the team kept everything cohesive. The final assets were clean,
+            consistent, and premium.”
+          </p>
+          <div class="testimonial-client">
+            <div class="testimonial-avatar" aria-hidden="true"></div>
+            <div>
+              <strong>Sana Qureshi</strong>
+              <span>Product Lead</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p>Reach the right team fast — direct emails for every project type.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <span>Design</span>
+          <a href="mailto:design@GraphCarry.in">design@GraphCarry.in</a>
+        </div>
+        <div class="contact-card">
+          <span>Strach</span>
+          <a href="mailto:stratch@GraphCarry.in">stratch@GraphCarry.in</a>
+        </div>
+        <div class="contact-card">
+          <span>Idea</span>
+          <a href="mailto:idea@GraphCarry.in">idea@GraphCarry.in</a>
+        </div>
+        <div class="contact-card">
+          <span>Fashion</span>
+          <a href="mailto:fasihn@GraphCarry.in">fasihn@GraphCarry.in</a>
+        </div>
+        <div class="contact-card">
+          <span>Support</span>
+          <a href="mailto:hello@GraphCarry.in">hello@GraphCarry.in</a>
+        </div>
+        <div class="contact-card">
+          <span>Collab</span>
+          <a href="mailto:collab@GraphCarry.in">collab@GraphCarry.in</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>GraphCarry</h3>
+          <p>
+            Luxury-first design studio shaping brand identities, product visuals, and editorial
+            storytelling for modern labels.
+          </p>
+        </div>
+        <ul class="footer-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#showcase">Gallery</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="footer-cta">
+          <button class="cta-primary" type="button">Start a Project</button>
+          <span class="service-kicker">hello@GraphCarry.in</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 GraphCarry.in</span>
+        <span>All Rights Reserved</span>
+        <span>Premium Design Studio</span>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>

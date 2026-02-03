@@ -51,7 +51,7 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             align-items: center;
-            padding: 3.5rem clamp(1.25rem, 4vw, 4.5rem) 3rem;
+            padding: 4.5rem clamp(1.75rem, 6vw, 6.5rem) 3.5rem;
             overflow: hidden;
         }
 
@@ -149,6 +149,68 @@
             place-items: center;
             animation: rise 1.2s ease-out both;
             animation-delay: 0.1s;
+        }
+
+        .side-rail {
+            position: absolute;
+            top: 6rem;
+            bottom: 6rem;
+            width: 96px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.4rem;
+            pointer-events: none;
+        }
+
+        .side-rail.side-left {
+            left: clamp(0.75rem, 3vw, 2.5rem);
+        }
+
+        .side-rail.side-right {
+            right: clamp(0.75rem, 3vw, 2.5rem);
+        }
+
+        .side-chip {
+            width: 100%;
+            padding: 0.75rem 0.4rem;
+            border-radius: 16px;
+            border: 1px solid rgba(216, 176, 116, 0.28);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--gold-2);
+            font-size: 0.7rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 1.4;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+        }
+
+        .side-chip span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            margin-top: 0.35rem;
+        }
+
+        .side-orbit {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            border: 1px dashed rgba(216, 176, 116, 0.35);
+            display: grid;
+            place-items: center;
+        }
+
+        .side-orbit::after {
+            content: "";
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(216, 176, 116, 0.35), transparent 70%);
+            box-shadow: inset 0 0 0 1px rgba(216, 176, 116, 0.35);
         }
 
         .logo-card {
@@ -370,6 +432,10 @@
                 bottom: 1rem;
                 text-align: center;
             }
+
+            .side-rail {
+                display: none;
+            }
         }
 
         @media (max-width: 520px) {
@@ -416,6 +482,16 @@
 
     <div class="page">
         <div class="glow" aria-hidden="true"></div>
+        <div class="side-rail side-left" aria-hidden="true">
+            <div class="side-chip">Signal<span>V1</span></div>
+            <div class="side-orbit"></div>
+            <div class="side-chip">Pulse<span>Live</span></div>
+        </div>
+        <div class="side-rail side-right" aria-hidden="true">
+            <div class="side-chip">Forecast<span>Beta</span></div>
+            <div class="side-orbit"></div>
+            <div class="side-chip">Insight<span>Prime</span></div>
+        </div>
 
         <section class="left">
             <div class="badge">GraphCarry.in</div>
