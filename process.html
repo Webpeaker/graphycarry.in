@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Process - GraphCarry Studio | Jaipur Fashion Designer</title>
+  <meta name="description"
+    content="Our process blends discovery, design, and couture craftsmanship. Learn how GraphCarry and Mahak Patel deliver luxury branding and custom fashion in Jaipur." />
+  <meta name="keywords"
+    content="GraphCarry process, Jaipur fashion designer, Mahak Patel process, couture workflow" />
+  <meta name="author" content="GraphCarry" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Process - GraphCarry Studio" />
+  <meta property="og:description" content="Discovery, design, and couture craftsmanship." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="logo.png" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="Process - GraphCarry Studio" />
+  <meta property="twitter:description" content="Discovery, design, and couture craftsmanship." />
+  <meta property="twitter:image" content="logo.png" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap");
+
+    :root {
+      --bg: #0b0713;
+      --bg-deep: #090512;
+      --gold: #d8b074;
+      --gold-2: #f0cf8a;
+      --magenta: #d4579b;
+      --violet: #6c3f9b;
+      --white: #f6f2ff;
+      --muted: #c7b8d6;
+      --card: rgba(255, 255, 255, 0.06);
+      --stroke: rgba(255, 255, 255, 0.12);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--white);
+      background: radial-gradient(1200px 800px at 20% 10%, #2a163f 0%, transparent 60%),
+        radial-gradient(900px 700px at 90% 20%, #2a1f3b 0%, transparent 55%),
+        linear-gradient(135deg, var(--bg) 0%, var(--bg-deep) 100%);
+      font-family: "Source Sans 3", system-ui, -apple-system, sans-serif;
+      overflow-x: hidden;
+      scrollbar-width: none;
+    }
+
+    body::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+
+    .page {
+      width: 100%;
+      padding: 4.6rem clamp(1.8rem, 6vw, 7.5rem) 5.4rem;
+      display: block;
+      position: relative;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-bottom: 3.2rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .brand img {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      object-fit: contain;
+      background: #0f0b12;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .brand span {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      font-size: 1.35rem;
+      letter-spacing: 0.02em;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex: 1 1 420px;
+      position: relative;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--white);
+      font-size: 1.2rem;
+      cursor: pointer;
+      justify-self: end;
+    }
+
+    .nav-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem 1.4rem;
+      list-style: none;
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      background: #1c1328;
+      border: 1px solid var(--stroke);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      align-items: center;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .nav-wrap a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+      cursor: pointer;
+    }
+
+    .nav-wrap a:hover,
+    .nav-wrap a.active {
+      color: var(--gold-2);
+    }
+
+    .cta-button {
+      padding: 0.85rem 1.4rem;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      color: #2a1a34;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    section {
+      width: 100%;
+      padding: 3.8rem 0;
+      position: relative;
+    }
+
+    section + section {
+      margin-top: 1.6rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) minmax(240px, 0.9fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-left {
+      display: grid;
+      gap: 1.6rem;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-2);
+    }
+
+    .hero-title {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      font-size: clamp(2.8rem, 6vw, 4.2rem);
+      line-height: 1.1;
+    }
+
+    .hero-text {
+      color: var(--muted);
+      font-size: 1.15rem;
+      line-height: 1.75;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.6rem;
+    }
+
+    .process-card {
+      padding: 2rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .process-card span {
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-2);
+    }
+
+    .process-card h3 {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      font-size: 1.35rem;
+    }
+
+    .process-card p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-head h2 {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 680px;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1.6rem;
+      align-items: start;
+      padding: 1.6rem 1.8rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--stroke);
+    }
+
+    .timeline-item span {
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-2);
+    }
+
+    .timeline-item h4 {
+      font-size: 1.25rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 960px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        flex: 1 1 100%;
+      }
+
+      .menu-toggle {
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .nav-wrap {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: center;
+        z-index: 20;
+        padding: 1rem;
+      }
+
+      nav.nav-open .nav-wrap {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-wrap {
+        width: 100%;
+        justify-content: center;
+        padding: 0.8rem 1rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding: 2rem 1.2rem;
+      }
+
+      .brand span {
+        font-size: 1.2rem;
+      }
+
+      .nav-wrap {
+        border-radius: 18px;
+        padding: 1rem;
+      }
+
+      .cta-button {
+        order: 2;
+        padding: 0.65rem 0.9rem;
+        font-size: 0.82rem;
+      }
+
+      .menu-toggle {
+        order: 3;
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+      }
+
+      nav {
+        order: 4;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="index.html">
+        <img src="logo.png" alt="GraphCarry logo" />
+        <span>GraphCarry</span>
+      </a>
+
+      <nav aria-label="Main" id="main-nav">
+        <ul class="nav-wrap">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a class="active" href="process.html">Process</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-controls="main-nav"
+        aria-expanded="false">
+        ☰
+      </button>
+
+      <button class="cta-button" type="button">Book an Appointment</button>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left">
+        <div class="kicker">Process</div>
+        <h1 class="hero-title">Structured, calm, and couture-first delivery.</h1>
+        <p class="hero-text">
+          GraphCarry and Mahak Patel follow a focused workflow that blends design strategy and craft,
+          from discovery to final delivery.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>How We Work</h2>
+        <p>Clarity, communication, and craftsmanship at every step.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-card">
+          <span>Step 01</span>
+          <h3>Discovery</h3>
+          <p>Brand goals, event timelines, and styling preferences mapped clearly.</p>
+        </div>
+        <div class="process-card">
+          <span>Step 02</span>
+          <h3>Concepting</h3>
+          <p>Sketches, moodboards, and visual direction aligned with the brief.</p>
+        </div>
+        <div class="process-card">
+          <span>Step 03</span>
+          <h3>Craft & Build</h3>
+          <p>Design system production and couture detailing in the Jaipur studio.</p>
+        </div>
+        <div class="process-card">
+          <span>Step 04</span>
+          <h3>Final Delivery</h3>
+          <p>Polished assets and finished garments ready for launch or event day.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Timeline Snapshot</h2>
+        <p>Typical timeline for branding and couture projects.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span>Week 01</span>
+          <div>
+            <h4>Discovery + Direction</h4>
+            <p>Briefing, goals, and creative alignment.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span>Week 02</span>
+          <div>
+            <h4>Design + Drafting</h4>
+            <p>Visual concepts, sketches, and fabric selection.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span>Week 03</span>
+          <div>
+            <h4>Production + Fittings</h4>
+            <p>Craft development, refinements, and final touches.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const nav = document.querySelector("#main-nav");
+    const navToggle = document.querySelector(".menu-toggle");
+
+    if (nav && navToggle) {
+      navToggle.addEventListener("click", () => {
+        nav.classList.toggle("nav-open");
+        const isOpen = nav.classList.contains("nav-open");
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+        navToggle.textContent = isOpen ? "✕" : "☰";
+      });
+    }
+  </script>
+</body>
+
+</html>
